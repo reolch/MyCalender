@@ -1,0 +1,441 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A02B92528A87D5B0090C368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02B92428A87D5B0090C368 /* AppDelegate.swift */; };
+		5A02B92728A87D5B0090C368 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02B92628A87D5B0090C368 /* SceneDelegate.swift */; };
+		5A02B92928A87D5B0090C368 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02B92828A87D5B0090C368 /* ViewController.swift */; };
+		5A02B92C28A87D5B0090C368 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A02B92A28A87D5B0090C368 /* Main.storyboard */; };
+		5A02B92F28A87D5B0090C368 /* MyCalender.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A02B92D28A87D5B0090C368 /* MyCalender.xcdatamodeld */; };
+		5A02B93128A87D5C0090C368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A02B93028A87D5C0090C368 /* Assets.xcassets */; };
+		5A02B93428A87D5C0090C368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A02B93228A87D5C0090C368 /* LaunchScreen.storyboard */; };
+		5A02B93D28A8B2C30090C368 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02B93C28A8B2C30090C368 /* AddTaskViewController.swift */; };
+		5A02B93F28A8B8270090C368 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02B93E28A8B8270090C368 /* Utils.swift */; };
+		EC38393851CCE47418F6F93F /* Pods_MyCalender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9F554B595B165F937332C0 /* Pods_MyCalender.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		521CDD41CAA0969A4A2A5A20 /* Pods-MyCalender.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCalender.release.xcconfig"; path = "Target Support Files/Pods-MyCalender/Pods-MyCalender.release.xcconfig"; sourceTree = "<group>"; };
+		5A02B92128A87D5B0090C368 /* MyCalender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCalender.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A02B92428A87D5B0090C368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5A02B92628A87D5B0090C368 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5A02B92828A87D5B0090C368 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5A02B92B28A87D5B0090C368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5A02B92E28A87D5B0090C368 /* MyCalender.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyCalender.xcdatamodel; sourceTree = "<group>"; };
+		5A02B93028A87D5C0090C368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A02B93328A87D5C0090C368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5A02B93528A87D5C0090C368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A02B93C28A8B2C30090C368 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		5A02B93E28A8B8270090C368 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		CE9F554B595B165F937332C0 /* Pods_MyCalender.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCalender.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE26A6CCE65B6223BB7DD693 /* Pods-MyCalender.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCalender.debug.xcconfig"; path = "Target Support Files/Pods-MyCalender/Pods-MyCalender.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A02B91E28A87D5B0090C368 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC38393851CCE47418F6F93F /* Pods_MyCalender.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2CD6F65E11D753AD43363708 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE9F554B595B165F937332C0 /* Pods_MyCalender.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A02B91828A87D5B0090C368 = {
+			isa = PBXGroup;
+			children = (
+				5A02B92328A87D5B0090C368 /* MyCalender */,
+				5A02B92228A87D5B0090C368 /* Products */,
+				C5926A19E58005BAA9BE3C29 /* Pods */,
+				2CD6F65E11D753AD43363708 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5A02B92228A87D5B0090C368 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A02B92128A87D5B0090C368 /* MyCalender.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A02B92328A87D5B0090C368 /* MyCalender */ = {
+			isa = PBXGroup;
+			children = (
+				5A02B92428A87D5B0090C368 /* AppDelegate.swift */,
+				5A02B92628A87D5B0090C368 /* SceneDelegate.swift */,
+				5A02B92828A87D5B0090C368 /* ViewController.swift */,
+				5A02B92A28A87D5B0090C368 /* Main.storyboard */,
+				5A02B93028A87D5C0090C368 /* Assets.xcassets */,
+				5A02B93228A87D5C0090C368 /* LaunchScreen.storyboard */,
+				5A02B93528A87D5C0090C368 /* Info.plist */,
+				5A02B92D28A87D5B0090C368 /* MyCalender.xcdatamodeld */,
+				5A02B93C28A8B2C30090C368 /* AddTaskViewController.swift */,
+				5A02B93E28A8B8270090C368 /* Utils.swift */,
+			);
+			path = MyCalender;
+			sourceTree = "<group>";
+		};
+		C5926A19E58005BAA9BE3C29 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE26A6CCE65B6223BB7DD693 /* Pods-MyCalender.debug.xcconfig */,
+				521CDD41CAA0969A4A2A5A20 /* Pods-MyCalender.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A02B92028A87D5B0090C368 /* MyCalender */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A02B93828A87D5C0090C368 /* Build configuration list for PBXNativeTarget "MyCalender" */;
+			buildPhases = (
+				8B1E90601208099BE74C3544 /* [CP] Check Pods Manifest.lock */,
+				5A02B91D28A87D5B0090C368 /* Sources */,
+				5A02B91E28A87D5B0090C368 /* Frameworks */,
+				5A02B91F28A87D5B0090C368 /* Resources */,
+				8A35F498FBFCBEEAA5629784 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyCalender;
+			productName = MyCalender;
+			productReference = 5A02B92128A87D5B0090C368 /* MyCalender.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A02B91928A87D5B0090C368 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					5A02B92028A87D5B0090C368 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 5A02B91C28A87D5B0090C368 /* Build configuration list for PBXProject "MyCalender" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A02B91828A87D5B0090C368;
+			productRefGroup = 5A02B92228A87D5B0090C368 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A02B92028A87D5B0090C368 /* MyCalender */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A02B91F28A87D5B0090C368 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A02B93428A87D5C0090C368 /* LaunchScreen.storyboard in Resources */,
+				5A02B93128A87D5C0090C368 /* Assets.xcassets in Resources */,
+				5A02B92C28A87D5B0090C368 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8A35F498FBFCBEEAA5629784 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCalender/Pods-MyCalender-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCalender/Pods-MyCalender-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCalender/Pods-MyCalender-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B1E90601208099BE74C3544 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyCalender-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A02B91D28A87D5B0090C368 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A02B92928A87D5B0090C368 /* ViewController.swift in Sources */,
+				5A02B92528A87D5B0090C368 /* AppDelegate.swift in Sources */,
+				5A02B92728A87D5B0090C368 /* SceneDelegate.swift in Sources */,
+				5A02B92F28A87D5B0090C368 /* MyCalender.xcdatamodeld in Sources */,
+				5A02B93D28A8B2C30090C368 /* AddTaskViewController.swift in Sources */,
+				5A02B93F28A8B8270090C368 /* Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5A02B92A28A87D5B0090C368 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A02B92B28A87D5B0090C368 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5A02B93228A87D5C0090C368 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A02B93328A87D5C0090C368 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5A02B93628A87D5C0090C368 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5A02B93728A87D5C0090C368 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A02B93928A87D5C0090C368 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE26A6CCE65B6223BB7DD693 /* Pods-MyCalender.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5GJUK72LKZ;
+				INFOPLIST_FILE = MyCalender/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = reolch.MyCalender;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A02B93A28A87D5C0090C368 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 521CDD41CAA0969A4A2A5A20 /* Pods-MyCalender.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5GJUK72LKZ;
+				INFOPLIST_FILE = MyCalender/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = reolch.MyCalender;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A02B91C28A87D5B0090C368 /* Build configuration list for PBXProject "MyCalender" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A02B93628A87D5C0090C368 /* Debug */,
+				5A02B93728A87D5C0090C368 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A02B93828A87D5C0090C368 /* Build configuration list for PBXNativeTarget "MyCalender" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A02B93928A87D5C0090C368 /* Debug */,
+				5A02B93A28A87D5C0090C368 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5A02B92D28A87D5B0090C368 /* MyCalender.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A02B92E28A87D5B0090C368 /* MyCalender.xcdatamodel */,
+			);
+			currentVersion = 5A02B92E28A87D5B0090C368 /* MyCalender.xcdatamodel */;
+			path = MyCalender.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5A02B91928A87D5B0090C368 /* Project object */;
+}
