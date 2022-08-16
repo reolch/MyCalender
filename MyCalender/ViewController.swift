@@ -64,6 +64,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         nextView.selectedSchedule = scheduleList[indexPath.row]
         present(nextView, animated: true, completion: nil)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        var schedules = Utils.shared.load()
+        guard let foundIndex = Utils.shared.searchById(id: scheduleList[indexPath.row].id.uuidString) else { return }
+        schedules.remove(at: foundIndex)
+        Utils.shared.save(Schedules: schedules)
+        scheduleList = Utils.shared.searchByDate(date: selectedDate)
+        tableview.reloadData()
+    }
 }
 
 extension ViewController: AddTaskViewControllerOutput {
