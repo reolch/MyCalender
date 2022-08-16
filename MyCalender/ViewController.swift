@@ -29,14 +29,6 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         tableview.reloadData()
     }
     
-    /// 日付のみを取り出す関数
-    func dateFormat(date: Date) -> String {
-         let formatter = DateFormatter()
-         formatter.dateStyle = .long
-         formatter.timeStyle = .none
-         return formatter.string(from: date)
-     }
-    
     @IBAction func didPushedAdd(_ sender: Any) {
         let nextView = storyboard?.instantiateViewController(identifier: "AddTaskViewController") as! AddTaskViewController
         nextView.delegate = self
@@ -47,15 +39,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
 extension ViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
-        scheduleList.removeAll()
-        var schedulesPurposeList: [Schedule] = []
-        let schedules = Utils.shared.load() ?? []
-        for schedule in schedules {
-            if dateFormat(date: schedule.date) == dateFormat(date: date) {
-                schedulesPurposeList.append(schedule)
-                scheduleList = schedulesPurposeList
-            }
-        }
+        scheduleList = Utils.shared.searchByDate(date: selectedDate)
         tableview.reloadData()
     }
 }
@@ -71,19 +55,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = scheduleList[indexPath.row].title
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 列番号を渡す
+        let nextView = storyboard?.instantiateViewController(identifier: "AddTaskViewController") as! AddTaskViewController
+        nextView.delegate = self
+        nextView.mode = .Edit
+        nextView.selectedSchedule = scheduleList[indexPath.row]
+        nextView.selectedRow = indexPath.row
+        present(nextView, animated: true, completion: nil)
+    }
 }
 
 extension ViewController: AddTaskViewControllerOutput {
     func notifyClose() {
         dismiss(animated: false, completion: .none)
-        var schedulesPurposeList: [Schedule] = []
-        let schedules = Utils.shared.load() ?? []
-        for schedule in schedules {
-            if dateFormat(date: schedule.date) == dateFormat(date: selectedDate) {
-                schedulesPurposeList.append(schedule)
-                scheduleList = schedulesPurposeList
-            }
-        }
+        scheduleList = Utils.shared.searchByDate(date: selectedDate)
         tableview.reloadData()
     }
     

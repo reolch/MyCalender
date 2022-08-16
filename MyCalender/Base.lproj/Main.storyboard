@@ -154,6 +154,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Chu-KI-hHc"/>
                     <connections>
+                        <outlet property="button" destination="Nfk-oJ-40Z" id="Rxh-ns-ypR"/>
                         <outlet property="dateTextField" destination="cHo-FM-Fvj" id="mTx-ro-p9g"/>
                         <outlet property="taskNameTextField" destination="5Tp-E2-YER" id="aun-DJ-qpZ"/>
                     </connections>
