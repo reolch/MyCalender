@@ -79,37 +79,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タスクの登録" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B65-dt-3g2">
-                                <rect key="frame" x="16" y="60" width="382" height="31.5"/>
+                                <rect key="frame" x="16" y="60" width="382" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbq-vL-FIj">
-                                <rect key="frame" x="16" y="99.5" width="382" height="1"/>
+                                <rect key="frame" x="16" y="100" width="382" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="9bS-mA-l9A"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タスク名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8y-Ni-uTs">
-                                <rect key="frame" x="16" y="123.5" width="69.5" height="21"/>
+                                <rect key="frame" x="16" y="124" width="69.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Tp-E2-YER">
-                                <rect key="frame" x="16" y="160.5" width="382" height="34"/>
+                                <rect key="frame" x="16" y="161" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bw9-YR-HaR">
-                                <rect key="frame" x="16" y="226.5" width="35" height="21"/>
+                                <rect key="frame" x="16" y="227" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cHo-FM-Fvj">
-                                <rect key="frame" x="16" y="263.5" width="382" height="34"/>
+                                <rect key="frame" x="16" y="264" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -157,11 +157,12 @@
                         <outlet property="button" destination="Nfk-oJ-40Z" id="Rxh-ns-ypR"/>
                         <outlet property="dateTextField" destination="cHo-FM-Fvj" id="mTx-ro-p9g"/>
                         <outlet property="taskNameTextField" destination="5Tp-E2-YER" id="aun-DJ-qpZ"/>
+                        <outlet property="titleLabel" destination="B65-dt-3g2" id="Zwy-ZR-J9l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBs-Xf-RWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1020" y="130"/>
+            <point key="canvasLocation" x="-1020.2898550724639" y="129.91071428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9OW-Oj-aAN">
