@@ -62,7 +62,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         nextView.delegate = self
         nextView.mode = .Edit
         nextView.selectedSchedule = scheduleList[indexPath.row]
-        nextView.selectedRow = indexPath.row
         present(nextView, animated: true, completion: nil)
     }
 }

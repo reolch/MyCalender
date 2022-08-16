@@ -15,6 +15,7 @@ protocol AddTaskViewControllerOutput {
 
 class AddTaskViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var button: UIButton!
@@ -32,7 +33,8 @@ class AddTaskViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if selectedRow != nil {
+        if mode == .Edit {
+            titleLabel.text = "タスクの編集"
             button.setTitle("編集", for: .normal)
         }
         if selectedSchedule != nil {
@@ -76,11 +78,10 @@ class AddTaskViewController: UIViewController {
         guard let date = Utils.shared.covertStringToDate(type: .Date, date: dateTextField.text ?? "") else { return }
         var schedules = Utils.shared.load()
         
-        if mode == .Edit && selectedRow != nil {
-            var scheduleList: [Schedule] = []
-            scheduleList = Utils.shared.searchByDate(date: date)
-            let scheduleDate = Schedule.init(title: taskNameTextField.text ?? "", date: date)
-            scheduleList[selectedRow!] = scheduleDate
+        if mode == .Edit {
+            guard let selectedSchedule = selectedSchedule else { return }
+            guard let foundIndex = Utils.shared.searchById(id: selectedSchedule.id.uuidString) else { return }
+            schedules[foundIndex] = Schedule.init(title: taskNameTextField.text ?? "", date: date)
         } else {
             let schedule = Schedule.init(title: taskNameTextField.text ?? "", date: date)
             schedules.append(schedule)

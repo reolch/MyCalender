@@ -49,9 +49,23 @@ class Utils: NSObject {
         return dateFormatter.string(from: date)
     }
     
+    /// 一致するIDを持つ要素のIndexを返却する
+    /// - Parameters:
+    ///   - id: 見つけたい要素の識別子
+    /// - Returns: 一致するIDを持つ要素のIndex
+    func searchById(id: String) -> Int? {
+        let schedules = load()
+        for (index, schedule) in schedules.enumerated() {
+            if schedule.id.uuidString == id {
+                return index
+            }
+        }
+        return nil
+    }
+    
     func searchByDate(date: Date) -> [Schedule] {
         var scheduleList: [Schedule] = []
-        let schedules = Utils.shared.load()
+        let schedules = load()
         for schedule in schedules {
             if convertDateFormat(type: .DateWithoutTime, date: schedule.date) == convertDateFormat(type: .DateWithoutTime ,date: date) {
                 scheduleList.append(schedule)
@@ -60,5 +74,3 @@ class Utils: NSObject {
         return scheduleList
     }
 }
-
-
