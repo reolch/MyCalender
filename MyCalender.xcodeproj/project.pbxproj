@@ -19,6 +19,7 @@
 		5A37AEAC28AB5613002ACE82 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37AEAB28AB5613002ACE82 /* Schedule.swift */; };
 		5A37AEB028AB57BF002ACE82 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37AEAF28AB57BF002ACE82 /* Mode.swift */; };
 		5A37AEB328AB59E7002ACE82 /* DateFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37AEB228AB59E7002ACE82 /* DateFormatType.swift */; };
+		5AFDA27528AFD87F00F7F4EC /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDA27428AFD87F00F7F4EC /* TodoModel.swift */; };
 		EC38393851CCE47418F6F93F /* Pods_MyCalender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9F554B595B165F937332C0 /* Pods_MyCalender.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		5A37AEAB28AB5613002ACE82 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		5A37AEAF28AB57BF002ACE82 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		5A37AEB228AB59E7002ACE82 /* DateFormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatType.swift; sourceTree = "<group>"; };
+		5AFDA27428AFD87F00F7F4EC /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 		CE9F554B595B165F937332C0 /* Pods_MyCalender.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCalender.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE26A6CCE65B6223BB7DD693 /* Pods-MyCalender.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCalender.debug.xcconfig"; path = "Target Support Files/Pods-MyCalender/Pods-MyCalender.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 		5A02B92328A87D5B0090C368 /* MyCalender */ = {
 			isa = PBXGroup;
 			children = (
+				5AFDA27128AFD83F00F7F4EC /* Model */,
 				5A37AEAE28AB5786002ACE82 /* Enum */,
 				5A37AEAA28AB55F9002ACE82 /* Struct */,
 				5A02B92428A87D5B0090C368 /* AppDelegate.swift */,
@@ -114,6 +117,14 @@
 				5A37AEB228AB59E7002ACE82 /* DateFormatType.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		5AFDA27128AFD83F00F7F4EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5AFDA27428AFD87F00F7F4EC /* TodoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C5926A19E58005BAA9BE3C29 /* Pods */ = {
@@ -242,6 +253,7 @@
 				5A02B92928A87D5B0090C368 /* ViewController.swift in Sources */,
 				5A37AEB328AB59E7002ACE82 /* DateFormatType.swift in Sources */,
 				5A02B92528A87D5B0090C368 /* AppDelegate.swift in Sources */,
+				5AFDA27528AFD87F00F7F4EC /* TodoModel.swift in Sources */,
 				5A37AEB028AB57BF002ACE82 /* Mode.swift in Sources */,
 				5A02B92728A87D5B0090C368 /* SceneDelegate.swift in Sources */,
 				5A02B92F28A87D5B0090C368 /* MyCalender.xcdatamodeld in Sources */,

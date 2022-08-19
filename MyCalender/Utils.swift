@@ -27,6 +27,7 @@ class Utils: NSObject {
         return Schedules
     }
     
+    /// - FIXME 時間なしオプションが動作しない
     func covertStringToDate(type: DateFormatType, date: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale?
