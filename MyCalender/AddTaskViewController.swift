@@ -18,18 +18,22 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var button: UIButton!
     
     let datePicker = UIDatePicker()
+    let timePicker = UIDatePicker()
     
     var delegate: AddTaskViewControllerOutput?
     var mode: Mode = .Regist
-    var selectedRow: Int?
     var id: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createDatePicker()
+        dateTextField.delegate = self
+        timeTextField.delegate = self
+        initDatePicker()
+        initTimePicker()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,32 +52,54 @@ class AddTaskViewController: UIViewController {
             dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
             taskNameTextField.text = todoModels[0].title
             dateTextField.text = todoModels[0].date
+            timeTextField.text = todoModels[0].time
         }
     }
     
-    func createDatePicker(){
-        // DatePickerModeをDate(日付)に設定
+    func initDatePicker(){
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneForDate))
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .none
+        datePicker.date = f.date(from: f.string(from: Date())) ?? Date()
         datePicker.datePickerMode = .date
-        // DatePickerを日本語化
-        datePicker.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
-        // textFieldのinputViewにdatepickerを設定
+        datePicker.preferredDatePickerStyle = .wheels
         dateTextField.inputView = datePicker
-        // UIToolbarを設定
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneClicked))
-        // Doneボタンを追加
-        toolbar.setItems([doneButton], animated: true)
-        // FieldにToolbarを追加
         dateTextField.inputAccessoryView = toolbar
     }
     
-    @objc func doneClicked(){
+    func initTimePicker() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneForTime))
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+        timePicker.datePickerMode = .time
+        timePicker.timeZone = .current
+        timePicker.locale = Locale.init(identifier: "Japanese")
+        timePicker.preferredDatePickerStyle = .wheels
+        timeTextField.inputView = timePicker
+        timeTextField.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneForDate(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
+        dateFormatter.timeStyle = .none
         dateFormatter.locale    = NSLocale(localeIdentifier: "ja_JP") as Locale?
         dateTextField.text = dateFormatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func doneForTime() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.locale    = Locale.init(identifier: "Japanese")
+        timeTextField.text = dateFormatter.string(from: timePicker.date)
         self.view.endEditing(true)
     }
     
@@ -83,8 +109,8 @@ class AddTaskViewController: UIViewController {
         if mode == .Regist {
             // テキストフィールドの名前を突っ込む
             todoModel.title = taskNameTextField.text ?? ""
-            guard let date = Utils.shared.covertStringToDate(type: .Date, date: dateTextField.text ?? "") else { return }
-            todoModel.date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: date)
+            todoModel.date = dateTextField.text ?? ""
+            todoModel.time = timeTextField.text ?? ""
             
             try! realm.write {
                 realm.add(todoModel)
@@ -99,10 +125,19 @@ class AddTaskViewController: UIViewController {
             
             try! realm.write {
                 todoModel.title = taskNameTextField.text ?? ""
-                guard let date = Utils.shared.covertStringToDate(type: .Date, date: dateTextField.text ?? "") else { return }
-                todoModel.date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: date)
+                todoModel.date = dateTextField.text ?? ""
+                todoModel.time = timeTextField.text ?? ""
             }
         }
         delegate?.notifyClose()
+    }
+}
+
+extension AddTaskViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        // キーボード入力や、カット/ペースによる変更を防ぐ
+        return false
     }
 }

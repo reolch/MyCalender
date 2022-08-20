@@ -14,10 +14,9 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     @IBOutlet weak var calender: FSCalendar!
     @IBOutlet weak var tableview: UITableView!
     
-    var scheduleList: [Schedule] = []
     var selectedDate: Date = Date()
     
-    var itemList: Results<TodoModel>!
+    var todoList: Results<TodoModel>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +27,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         
         let realm = try! Realm()
         let date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: selectedDate)
-        itemList = realm.objects(TodoModel.self).filter("date == '\(date)'")
+        todoList = realm.objects(TodoModel.self).filter("date == '\(date)'")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,20 +46,20 @@ extension ViewController: FSCalendarDelegate, FSCalendarDataSource {
         selectedDate = date
         let realm = try! Realm()
         let date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: selectedDate)
-        itemList = realm.objects(TodoModel.self).filter("date == '\(date)'")
+        todoList = realm.objects(TodoModel.self).filter("date == '\(date)'")
         tableview.reloadData()
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+        return todoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "normal")
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = itemList[indexPath.row].title
+        cell.textLabel?.text = todoList[indexPath.row].title
         return cell
     }
     
@@ -69,14 +68,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let nextView = storyboard?.instantiateViewController(identifier: "AddTaskViewController") as! AddTaskViewController
         nextView.delegate = self
         nextView.mode = .Edit
-        nextView.id = itemList[indexPath.row].id
+        nextView.id = todoList[indexPath.row].id
         present(nextView, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let realm = try! Realm()
-        let deleteList = realm.objects(TodoModel.self).filter("id == '\(itemList[indexPath.row].id)'")
-        
+        let deleteList = realm.objects(TodoModel.self).filter("id == '\(todoList[indexPath.row].id)'")
         try! realm.write {
             realm.delete(deleteList)
         }
@@ -89,7 +87,7 @@ extension ViewController: AddTaskViewControllerOutput {
         dismiss(animated: false, completion: .none)
         let realm = try! Realm()
         let date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: selectedDate)
-        itemList = realm.objects(TodoModel.self).filter("date == '\(date)'")
+        todoList = realm.objects(TodoModel.self).filter("date == '\(date)'")
         tableview.reloadData()
     }
 }
