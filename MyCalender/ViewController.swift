@@ -7,14 +7,17 @@
 
 import UIKit
 import FSCalendar
+import RealmSwift
 
 class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
-
+    
     @IBOutlet weak var calender: FSCalendar!
     @IBOutlet weak var tableview: UITableView!
     
     var scheduleList: [Schedule] = []
     var selectedDate: Date = Date()
+    
+    var itemList: Results<TodoModel>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,10 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         tableview.dataSource = self
         calender.delegate = self
         calender.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        let realm = try! Realm()
+        let date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: selectedDate)
+        itemList = realm.objects(TodoModel.self).filter("date == '\(date)'")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,20 +45,22 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
 extension ViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
-        scheduleList = Utils.shared.searchByDate(date: selectedDate)
+        let realm = try! Realm()
+        let date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: selectedDate)
+        itemList = realm.objects(TodoModel.self).filter("date == '\(date)'")
         tableview.reloadData()
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scheduleList.count
+        return itemList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "normal")
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = scheduleList[indexPath.row].title
+        cell.textLabel?.text = itemList[indexPath.row].title
         return cell
     }
     
@@ -61,16 +69,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let nextView = storyboard?.instantiateViewController(identifier: "AddTaskViewController") as! AddTaskViewController
         nextView.delegate = self
         nextView.mode = .Edit
-        nextView.selectedSchedule = scheduleList[indexPath.row]
+        nextView.id = itemList[indexPath.row].id
         present(nextView, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        var schedules = Utils.shared.load()
-        guard let foundIndex = Utils.shared.searchById(id: scheduleList[indexPath.row].id.uuidString) else { return }
-        schedules.remove(at: foundIndex)
-        Utils.shared.save(Schedules: schedules)
-        scheduleList = Utils.shared.searchByDate(date: selectedDate)
+        let realm = try! Realm()
+        let deleteList = realm.objects(TodoModel.self).filter("id == '\(itemList[indexPath.row].id)'")
+        
+        try! realm.write {
+            realm.delete(deleteList)
+        }
         tableview.reloadData()
     }
 }
@@ -78,8 +87,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController: AddTaskViewControllerOutput {
     func notifyClose() {
         dismiss(animated: false, completion: .none)
-        scheduleList = Utils.shared.searchByDate(date: selectedDate)
+        let realm = try! Realm()
+        let date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: selectedDate)
+        itemList = realm.objects(TodoModel.self).filter("date == '\(date)'")
         tableview.reloadData()
     }
-    
 }

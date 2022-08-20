@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 
 protocol AddTaskViewControllerOutput {
@@ -25,7 +25,7 @@ class AddTaskViewController: UIViewController {
     var delegate: AddTaskViewControllerOutput?
     var mode: Mode = .Regist
     var selectedRow: Int?
-    var selectedSchedule: Schedule?
+    var id: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +36,18 @@ class AddTaskViewController: UIViewController {
         if mode == .Edit {
             titleLabel.text = "タスクの編集"
             button.setTitle("編集", for: .normal)
-        }
-        if selectedSchedule != nil {
+            
+            let realm = try! Realm()
+            print(realm.objects(TodoModel.self))
+            let filterId = id!
+            let todoModels = realm.objects(TodoModel.self).filter("id == '\(filterId)'")
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .medium
             dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale?
             dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            taskNameTextField.text = selectedSchedule?.title
-            dateTextField.text = dateFormatter.string(from: selectedSchedule?.date ?? Date())
+            taskNameTextField.text = todoModels[0].title
+            dateTextField.text = todoModels[0].date
         }
     }
     
@@ -75,18 +78,31 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func didPushedRegistButton(_ sender: Any) {
-        guard let date = Utils.shared.covertStringToDate(type: .Date, date: dateTextField.text ?? "") else { return }
-        var schedules = Utils.shared.load()
+        var todoModel:TodoModel = TodoModel()
+        let realm = try! Realm()
+        if mode == .Regist {
+            // テキストフィールドの名前を突っ込む
+            todoModel.title = taskNameTextField.text ?? ""
+            guard let date = Utils.shared.covertStringToDate(type: .Date, date: dateTextField.text ?? "") else { return }
+            todoModel.date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: date)
+            
+            try! realm.write {
+                realm.add(todoModel)
+            }
+        }
         
         if mode == .Edit {
-            guard let selectedSchedule = selectedSchedule else { return }
-            guard let foundIndex = Utils.shared.searchById(id: selectedSchedule.id.uuidString) else { return }
-            schedules[foundIndex] = Schedule.init(title: taskNameTextField.text ?? "", date: date)
-        } else {
-            let schedule = Schedule.init(title: taskNameTextField.text ?? "", date: date)
-            schedules.append(schedule)
+            let filterId = id!
+            let todoModels = realm.objects(TodoModel.self).filter("id == '\(filterId)'")
+            // idなので一つの要素のみがヒットする
+            todoModel = todoModels[0]
+            
+            try! realm.write {
+                todoModel.title = taskNameTextField.text ?? ""
+                guard let date = Utils.shared.covertStringToDate(type: .Date, date: dateTextField.text ?? "") else { return }
+                todoModel.date = Utils.shared.convertDateFormat(type: .DateWithoutTime, date: date)
+            }
         }
-        Utils.shared.save(Schedules: schedules)
         delegate?.notifyClose()
     }
 }
